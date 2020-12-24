@@ -21,4 +21,6 @@ int main()
     srand(time(NULL));
     movement();
     WorL();
+    mciSendString("close BG.mp3", NULL, 0, NULL);
+    return 0;
 }
