@@ -60,9 +60,12 @@ int movement()
                 pos.px=49;
         }
         else if(input == 'q')
-            return 0;
+        {
+            wins++;
+            return;
+        }
         else
-            continue;
+            continue; //prints grid again
 
 
         system("CLS"); //clears the screen
