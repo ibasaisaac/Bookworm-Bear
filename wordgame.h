@@ -199,7 +199,7 @@ void WorL()
     }
     else if(wins>plays)
     {
-        mciSendString("close BG.mp3", NULL, 0, NULL);
+        return;
     }
     else
     {
