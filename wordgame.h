@@ -197,6 +197,10 @@ void WorL()
         printf("\n\n\t\tWooHoo!! You won! :)");
         PlaySound(TEXT("won.wav"), NULL, SND_SYNC);
     }
+    else if(wins>plays)
+    {
+        mciSendString("close BG.mp3", NULL, 0, NULL);
+    }
     else
     {
         printf("\n\n\t\tOh no!! You lose! :(\n");
