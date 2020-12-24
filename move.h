@@ -9,7 +9,7 @@ using namespace std;
 extern int plays,wins; //to use in all source files
 
 position check(position);
-int movement()
+void movement()
 {
     grid jungle {50, 25};   //jungle.width=10;jungle.height=10;
     //system("chcp 65001  > nul");
