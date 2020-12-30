@@ -26,7 +26,6 @@ encourage
 jurassic
 frozen
 dramatic
-transformers
 aladdin
 language
 programming
@@ -70,6 +69,3 @@ infrastructure
 administration
 meetings
 quarantine
-businessman
-inclination
-embarrassment
