@@ -5,6 +5,7 @@
 #include"grid.h"
 #include"wordgame.h"
 #include"moveascii.h"
+#include"timer.h"
 
 using namespace std;
 extern int plays,wins;
@@ -42,13 +43,19 @@ void movement()
     playerinput p;
 //cout<<pos.tx1<<" "<<pos.ty1<<" "<<pos.tx2<<" "<<pos.ty2<<endl;
     char input = '0';
-    while (plays<4)
+    count_down_time_in_secs= 300;
+    x_startTime=clock();
+    delta_time_update_timer();
+    gotoxy(1, 5);
+
+    while (time_left>0 && plays<4)
     {
         printf("\n");
         jungle.Render(pos);
-        input=p.getinput();
+        if(kbhit()){
+                  input=p.getinput();
         cin.clear(); // clear error flags
-
+        ;
         if (input == 'w') //up
         {
             pos.py--;
@@ -81,10 +88,13 @@ void movement()
         else
             continue; //prints grid again
 
-
-        system("CLS"); //clears the screen
         pos=check(pos);
     }
+    delta_time_update_timer();
+    }
+    system("CLS");
+
+
 }
 
 //checks for all of the pos values
