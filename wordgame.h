@@ -6,6 +6,7 @@
 #include<conio.h>
 #include"color.h"
 #include"move.h"
+#include"timer.h"
 
 extern int plays,wins;
 //void movement();
@@ -31,6 +32,8 @@ bool load(string file_name, vector<string> &list)
 
 void hangman()
 {
+    x_countTime=clock();
+    pause_time=(x_countTime-x_startTime)/CLOCKS_PER_SEC;
     system("CLS");
     //std::cout << R"()" << std::endl;
 
@@ -188,6 +191,9 @@ void hangman()
     }
     plays++;
     SetColor(WHITE);
+    x_startTime=clock();
+    count_down_time_in_secs-=pause_time;
+
     system("CLS");
 }
 void WorL()
@@ -197,14 +203,14 @@ void WorL()
         printf("\n\n\t\tWooHoo!! You won! :)");
         PlaySound(TEXT("won.wav"), NULL, SND_SYNC);
     }
-    else if(wins>plays)
-    {
-        return;
-    }
-    else
+    else if(plays>=4)
     {
         printf("\n\n\t\tOh no!! You lose! :(\n");
         PlaySound(TEXT("lose.wav"), NULL, SND_SYNC);
+    }
+    else if(time_left==0)
+    {
+        printf( "\n\n\t\tTime's out!\n");
     }
 }
 #endif // WORDGAME_H_INCLUDED
