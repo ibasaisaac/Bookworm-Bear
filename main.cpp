@@ -8,7 +8,7 @@
 #include"move.h"
 #include"wordgame.h"
 #include"moveascii.h"
-
+#include"timer.h"
 using namespace std;
 
 int plays=0,wins=0;
