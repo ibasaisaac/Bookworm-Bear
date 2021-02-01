@@ -52,45 +52,46 @@ void movement()
     {
         printf("\n");
         jungle.Render(pos);
-        if(kbhit()){
-                  input=p.getinput();
-        cin.clear(); // clear error flags
-        ;
-        if (input == 'w') //up
+        if(kbhit())
         {
-            pos.py--;
-            if(pos.py<=0)
-                pos.py=23;
-        }
-        else if (input == 's') //down
-        {
-            pos.py++;
-            if(pos.py>=24)
-                pos.py=1;
-        }
-        else if (input == 'd') //right
-        {
-            pos.px++;
-            if(pos.px>=49)
-                pos.px=1;
-        }
-        else if (input == 'a') //left
-        {
-            pos.px--;
-            if(pos.px<=0)
-                pos.px=48;
-        }
-        else if(input == 'q')
-        {
-            wins++;
-            return;
-        }
-        else
-            continue; //prints grid again
+            input=p.getinput();
+            cin.clear(); // clear error flags
 
-        pos=check(pos);
-    }
-    delta_time_update_timer();
+            if (input == 'w') //up
+            {
+                pos.py--;
+                if(pos.py<=0)
+                    pos.py=23;
+            }
+            else if (input == 's') //down
+            {
+                pos.py++;
+                if(pos.py>=24)
+                    pos.py=1;
+            }
+            else if (input == 'd') //right
+            {
+                pos.px++;
+                if(pos.px>=49)
+                    pos.px=1;
+            }
+            else if (input == 'a') //left
+            {
+                pos.px--;
+                if(pos.px<=0)
+                    pos.px=48;
+            }
+            else if(input == 'q')
+            {
+                wins++;
+                return;
+            }
+            else
+                continue; //prints grid again
+
+            pos=check(pos);
+        }
+        delta_time_update_timer();
     }
     system("CLS");
 
