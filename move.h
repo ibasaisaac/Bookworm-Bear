@@ -41,7 +41,7 @@ void movement()
     pos.ty4=rand()%23+1;
 
     playerinput p;
-//cout<<pos.tx1<<" "<<pos.ty1<<" "<<pos.tx2<<" "<<pos.ty2<<endl;
+
     char input = '0';
     count_down_time_in_secs= 300;
     x_startTime=clock();
@@ -52,6 +52,8 @@ void movement()
     {
         printf("\n");
         jungle.Render(pos);
+        cout<<"\n\n'd' for going right\n'a' for going left\n'w' for going up\n's' for going down\n'q' for quit\n";
+        cout<<"Type in which direction you want to move: ";
         if(kbhit())
         {
             input=p.getinput();
