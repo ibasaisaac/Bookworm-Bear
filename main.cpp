@@ -20,7 +20,6 @@ int main()
     srand(time(NULL));
     mciSendString("seek BG.mp3 to start", NULL, 100, NULL);
     mciSendString("play BG.mp3", NULL, 0, NULL);
-    //PlaySound(TEXT("welcome.wav"), NULL, SND_SYNC);
     movement();
     WorL();
     mciSendString("close BG.mp3", NULL, 0, NULL);
