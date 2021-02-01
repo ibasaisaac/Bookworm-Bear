@@ -35,10 +35,6 @@ void hangman()
     x_countTime=clock();
     pause_time=(x_countTime-x_startTime)/CLOCKS_PER_SEC;
     system("CLS");
-    //std::cout << R"()" << std::endl;
-
-
-    //PlaySound(TEXT("BG.mp3"), NULL, SND_ASYNC |SND_LOOP);
 
     //loading letters
     vector<char> alphabet;
@@ -75,10 +71,7 @@ void hangman()
     {
         wordlist.erase(itr);
         serial = (itr - wordlist.begin())+1;
-        //printf("\n%d  ", serial);
     }
-    //printing remaining words
-    //for (itr = wordlist.begin(); itr != wordlist.end(); itr++)    cout << ' ' << *itr;
 
     string hint = hintlist[serial-1];
 
@@ -176,9 +169,6 @@ void hangman()
         cout << "\n\n\t\t" << "The word is " << word << "\n\n";
         PlaySound(TEXT("bigwin.wav"), NULL, SND_SYNC);
         wins++; //new
-        // SetColor(WHITE);
-        //played++;
-        //movement();
     }
 
     else
@@ -186,8 +176,6 @@ void hangman()
         SetColor(BLUE);
         cout << "\n\n\t\t" << "The word was " << word << "\n\n";
         PlaySound(TEXT("biglose.wav"), NULL, SND_SYNC);
-        //SetColor(WHITE);
-        //movement();
     }
     plays++;
     SetColor(WHITE);
