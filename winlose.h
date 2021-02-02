@@ -1,21 +1,19 @@
 #ifndef WINLOSE_H_INCLUDED
 #define WINLOSE_H_INCLUDED
-#include"wordgame.h"
-#include"grid.h"
+
 #include"move.h"
-#include"input.h"
 #include"timer.h"
-#include"color.h"
+
 extern int plays,wins,points,level;
 char ch;
+movement();
 void WorL()
 {
     if(wins>=3)
     {
         level++;
         cout<<"\n\t\t"<<"You have "<<points<<" points"<<"\n\n";
-        cout<<"You moved to the next level"<<endl;
-        movement();
+        cout<<"\n\t\t"<<"You moved to the next level"<<endl;
     }
     else if(level==3)
     {
