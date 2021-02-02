@@ -11,7 +11,7 @@
 #include"timer.h"
 using namespace std;
 
-int plays=0,wins=0;
+int plays=0,wins=0,points=0;
 int grid_flag[50][25];
 
 int main()
