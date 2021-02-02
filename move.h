@@ -43,7 +43,7 @@ void movement()
     playerinput p;
 
     char input = '0';
-    count_down_time_in_secs= 180;
+    count_down_time_in_secs= 60;
     x_startTime=clock();
     delta_time_update_timer();
     gotoxy(1, 5);
