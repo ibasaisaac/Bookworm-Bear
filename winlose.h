@@ -6,29 +6,21 @@
 #include"input.h"
 #include"timer.h"
 #include"color.h"
-extern int plays,wins,points;
+extern int plays,wins,points,level;
 char ch;
 void WorL()
 {
-    if(wins==plays)
+    if(wins>=3)
+    {
+        level++;
+        cout<<"\n\t\t"<<"You have "<<points<<" points"<<"\n\n";
+        movement();
+    }
+    else if(level==3)
     {
         printf("\n\n\t\tWooHoo!! You won! :)");
         cout<<"\n\t\t"<<"You have "<<points<<" points"<<"\n\n";
         PlaySound(TEXT("won.wav"), NULL, SND_SYNC);
-//        cout<<"\n\n\n"<<"Do you want to continue? (Y/N)"<<endl;
-//        cout<<"Enter choice: ";
-//        cin>>ch;
-//        if(toupper(ch)=='Y')
-//        {
-//            wins=0;
-//            plays=0;
-//        }
-//        else
-//        {
-//            printf("\n\n\t\tOh no!! You lose! :(\n");
-//            cout<<"\n\t\t"<<"You have "<<points<<" points"<<"\n\n";
-//            PlaySound(TEXT("lose.wav"), NULL, SND_SYNC);
-//        }
     }
     else if(plays>=4 && wins<4)
     {
