@@ -12,6 +12,7 @@ extern int plays,wins,level;
 extern int grid_flag[50][25]; //to use in all source files
 
 position check(position);
+
 void movement()
 {
     grid jungle {50, 25};   //jungle.width=10;jungle.height=10;
