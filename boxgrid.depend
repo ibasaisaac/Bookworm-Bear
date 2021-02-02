@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1612269603 source:f:\game\boxgrid\main.cpp
+1612271411 source:f:\game\boxgrid\main.cpp
 	<bits/stdc++.h>
 	<windows.h>
 	<mmsystem.h>
@@ -24,7 +24,7 @@
 1612179416 f:\game\boxgrid\input.h
 	<iostream>
 
-1612269836 f:\game\boxgrid\move.h
+1612271532 f:\game\boxgrid\move.h
 	"input.h"
 	"grid.h"
 	"wordgame.h"
@@ -47,10 +47,11 @@
 	<cstdlib>
 	<ctime>
 
-1612269943 f:\game\boxgrid\winlose.h
+1612270262 f:\game\boxgrid\winlose.h
 	"wordgame.h"
 	"grid.h"
 	"move.h"
+	"input.h"
 	"timer.h"
 	"color.h"
 
