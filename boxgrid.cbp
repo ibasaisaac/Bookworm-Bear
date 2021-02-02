@@ -39,6 +39,7 @@
 		<Unit filename="move.h" />
 		<Unit filename="moveascii.h" />
 		<Unit filename="timer.h" />
+		<Unit filename="winlose.h" />
 		<Unit filename="wordgame.h" />
 		<Extensions />
 	</Project>
