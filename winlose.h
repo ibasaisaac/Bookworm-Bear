@@ -14,6 +14,7 @@ void WorL()
     {
         level++;
         cout<<"\n\t\t"<<"You have "<<points<<" points"<<"\n\n";
+        cout<<"You moved to the next level"<<endl;
         movement();
     }
     else if(level==3)
