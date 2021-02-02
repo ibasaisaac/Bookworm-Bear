@@ -8,7 +8,7 @@
 #include"timer.h"
 
 using namespace std;
-extern int plays,wins;
+extern int plays,wins,level;
 extern int grid_flag[50][25]; //to use in all source files
 
 position check(position);
@@ -39,6 +39,15 @@ void movement()
     pos.ty3=rand()%23+1;
     pos.tx4=rand()%48+1;
     pos.ty4=rand()%23+1;
+    if(level==2)
+    {
+        pos.wx5=rand()%48+1;
+        pos.wy5=rand()%23+1;
+        grid_flag[pos.wx5][pos.wy5]=1;
+        pos.wx6=rand()%48+1;
+        pos.wy6=rand()%23+1;
+        grid_flag[pos.wx6][pos.wy6]=1;
+    }
 
     playerinput p;
 
