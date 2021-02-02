@@ -78,7 +78,7 @@ void hangman()
 
 
     int total_letters, filled_blanks = 0, lives = 6, flag = 0, h = 1;;
-    char current_blanks[20], temp='n', temp1, temp2;
+    char current_blanks[25], temp='n', temp1, temp2;
     total_letters = word.size();
     for (int i = 0; i < total_letters; i++)
         current_blanks[i] = '_';
