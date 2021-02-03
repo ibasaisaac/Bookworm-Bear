@@ -12,16 +12,16 @@
 #include"winlose.h"
 using namespace std;
 
-int plays=0,wins=0,points=0,level=1;
+int plays=0,wins=0,points=6,level=1;
 int grid_flag[50][25];
 
 int main()
 {
-    srand(time(NULL));
     mciSendString("seek BG.mp3 to start", NULL, 100, NULL);
     mciSendString("play BG.mp3", NULL, 0, NULL);
+    srand(time(NULL));
     movement();
-    WorL();
+    //WorL();
     mciSendString("close BG.mp3", NULL, 0, NULL);
     return 0;
 }
