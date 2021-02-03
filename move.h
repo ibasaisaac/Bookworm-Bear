@@ -134,16 +134,23 @@ void movement()
             }
             system("CLS");
 
-            if(wins==plays)
+            if(wins==plays && wins!=0)
             {
                 printf("\n\n\t\tWooHoo!! You won! :)");
                 PlaySound(TEXT("won.wav"), NULL, SND_SYNC);
+                wins=0;
+                plays=0;
+                continue;
             }
             //level failed: couldn't guess all words
             else if(plays==4)
             {
                 printf("\n\n\t\tOh no!! You lose! :(\n");
                 PlaySound(TEXT("lose.wav"), NULL, SND_SYNC);
+                plays=0;
+                wins=0;
+                points=6;
+                continue;
             }
             else if(time_left==0)
             {
@@ -255,7 +262,6 @@ position check(position pos)
         movebear();
         printf("\n\n\t\tOh no!! You lose! :(\n");
         PlaySound(TEXT("lose.wav"), NULL, SND_SYNC);
-        exit(0);
     }
 
     return newpos;
