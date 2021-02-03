@@ -167,7 +167,7 @@ void hangman()
     if (filled_blanks == total_letters)
     {
         SetColor(GREEN);
-        points+=10;
+        points+=6;
         cout << "\n\n\t\t" << "The word is " << word << endl;
         cout<<"\n\t\t"<<"You have "<<points<<" points"<<"\n\n";
         PlaySound(TEXT("bigwin.wav"), NULL, SND_SYNC);
