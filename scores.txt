@@ -7,3 +7,8 @@ doom	5
 lily	3
 ii	16
 isaba	6
+issis	6
+isish	15
+isish	15
+isaac	-16
+isaac	-14
