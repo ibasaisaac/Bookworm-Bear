@@ -2,7 +2,6 @@ creativity
 youtube
 zombie
 microwave
-socialize
 workaholic
 stereotype
 simultaneously
@@ -16,7 +15,6 @@ camera
 beautiful
 avengers
 hardware
-fireworks
 dangerous
 geometry
 encourage
@@ -48,13 +46,10 @@ christmas
 chicken
 appearance
 covid
-impossible
 candidate
 giraffe
 mammal
-scientific
 technology
-depression
 procrastination
 professional
 teacher
@@ -63,4 +58,9 @@ discrimination
 software
 administration
 meetings
+birthday
+library
+everyone
 quarantine
+fireworks
+photography
