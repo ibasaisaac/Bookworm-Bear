@@ -6,3 +6,4 @@ tanha	7
 doom	5
 lily	3
 ii	16
+isaba	6
