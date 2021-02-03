@@ -6,6 +6,7 @@
 #include"wordgame.h"
 #include"moveascii.h"
 #include"timer.h"
+#include"winlose.h"
 
 using namespace std;
 extern int plays,wins,level,points;
@@ -36,6 +37,7 @@ void movement()
         cout<<"\n\n\n1. Start game\n2. Leaderboard\n3. BG Music\n4. How to play\n5. Exit game\n\nEnter your choice: ";
         cin>>men_ch;
         getchar();
+
         if(men_ch==1)
         {
             system("CLS");
@@ -64,15 +66,15 @@ void movement()
             pos.ty3=rand()%23+1;
             pos.tx4=rand()%48+1;
             pos.ty4=rand()%23+1;
-            if(level==2)
-            {
-                pos.wx5=rand()%48+1;
-                pos.wy5=rand()%23+1;
-                grid_flag[pos.wx5][pos.wy5]=1;
-                pos.wx6=rand()%48+1;
-                pos.wy6=rand()%23+1;
-                grid_flag[pos.wx6][pos.wy6]=1;
-            }
+//            if(level==2)
+//            {
+//                pos.wx5=rand()%48+1;
+//                pos.wy5=rand()%23+1;
+//                grid_flag[pos.wx5][pos.wy5]=1;
+//                pos.wx6=rand()%48+1;
+//                pos.wy6=rand()%23+1;
+//                grid_flag[pos.wx6][pos.wy6]=1;
+//            }
 
             playerinput p;
 
@@ -88,6 +90,7 @@ void movement()
                 jungle.Render(pos);
                 cout<<"\n\n'd' for going right\n'a' for going left\n'w' for going up\n's' for going down\n'q' for quit\n";
                 cout<<"Type in which direction you want to move: ";
+
                 if(kbhit())
                 {
                     input=p.getinput();
@@ -119,8 +122,8 @@ void movement()
                     }
                     else if(input == 'q')
                     {
-                        wins++;
-                        return;
+                        //wins++;
+                        break;
                     }
                     else
                         continue; //prints grid again
@@ -131,11 +134,26 @@ void movement()
             }
             system("CLS");
 
-            //WorL();
+            if(wins==plays)
+            {
+                printf("\n\n\t\tWooHoo!! You won! :)");
+                PlaySound(TEXT("won.wav"), NULL, SND_SYNC);
+            }
+            //level failed: couldn't guess all words
+            else if(plays==4)
+            {
+                printf("\n\n\t\tOh no!! You lose! :(\n");
+                PlaySound(TEXT("lose.wav"), NULL, SND_SYNC);
+            }
+            else if(time_left==0)
+            {
+                printf( "\n\n\t\tTime's out!\n");
+            }
 
             string tstr="\n"+name+"\t"+to_string(points);
             fputs(tstr.c_str(), score_fp); //putting the score and name in score.txt
         }
+
         else if(men_ch==2)
         {
             system("CLS");
@@ -193,6 +211,7 @@ void movement()
             }
             else
                 cout<<"rules.txt is missing\n";
+
             cout<<"Press enter to return to main menu\n";
             getchar();
             system("CLS");
@@ -202,6 +221,7 @@ void movement()
             exit(0);
         }
     }
+    fclose(score_fp);
 }
 
 //checks for all of the pos values
