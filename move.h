@@ -45,6 +45,7 @@ void movement()
         {
             system("CLS");
             int words=4;
+            score=0;
             grid jungle {50, 25};
             position ppos;
             while(men_ch==1)
@@ -185,30 +186,30 @@ void movement()
                     break;
                 }
                 //all levels cleared
-//                else if(wins>=15)
-//                {
-//                    printf("\n\n\t\tCongrats!! You have completed the game! *.* \n\n");
-//                    cout<<"Score: "<<score<<endl<<endl;
-//                    break;
-//                }
+                else if(wins>=15)
+                {
+                    printf("\n\n\t\tCongrats!! You have completed the game! *.* \n\n");
+                    cout<<"Score: "<<score<<endl<<endl;
+                    break;
+                }
                 //level cleared: guessed required words; go to next level
                 else if(wins>=words-1)
                 {
-                    if(wins>=15)
-                    {
-                        printf("\n\n\t\tCongrats!! You have completed the game! *.* \n\n");
-                        cout<<"Score: "<<score<<endl<<endl;
-                        break;
-                    }
-                    else
-                    {
+//                    if(wins>=15)
+//                    {
+//                        printf("\n\n\t\tCongrats!! You have completed the game! *.* \n\n");
+//                        cout<<"Score: "<<score<<endl<<endl;
+//                        break;
+//                    }
+//                    else
+//                    {
                         printf("\n\n\t\tWooHoo!! You won! :)\n\n");
                         PlaySound(TEXT("won.wav"), NULL, SND_SYNC);
                         cout<<"Score: "<<score<<endl<<endl;
                         cout<<"Press enter to go to next level\n";
                         getchar();
                         words+=2;
-                    }
+                    //}
                     system("CLS");
                 }
 
