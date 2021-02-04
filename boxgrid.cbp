@@ -34,7 +34,6 @@
 		</Compiler>
 		<Unit filename="color.h" />
 		<Unit filename="grid.h" />
-		<Unit filename="input.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="move.h" />
 		<Unit filename="moveascii.h" />
