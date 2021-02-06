@@ -55,36 +55,6 @@ void movement()
                 plays=0;
                 ppos.x = 1;
                 ppos.y = 1;
-//            pos.wx1=rand()%48+1; //range 1 to 48
-//            pos.wy1=rand()%23+1;
-//            grid_flag[pos.wx1][pos.wy1]=1;
-//            pos.wx2=rand()%48+1;
-//            pos.wy2=rand()%23+1;
-//            grid_flag[pos.wx2][pos.wy2]=1;
-//            pos.wx3=rand()%48+1;
-//            pos.wy3=rand()%23+1;
-//            grid_flag[pos.wx3][pos.wy3]=1;
-//            pos.wx4=rand()%48+1;
-//            pos.wy4=rand()%23+1;
-//            grid_flag[pos.wx4][pos.wy4]=1;
-//            pos.tx1=rand()%48+1;
-//            pos.ty1=rand()%23+1;
-//            pos.tx2=rand()%48+1;
-//            pos.ty2=rand()%23+1;
-//            pos.tx3=rand()%48+1;
-//            pos.ty3=rand()%23+1;
-//            pos.tx4=rand()%48+1;
-//            pos.ty4=rand()%23+1;
-//            if(level==2)
-//            {
-//                pos.wx5=rand()%48+1;
-//                pos.wy5=rand()%23+1;
-//                grid_flag[pos.wx5][pos.wy5]=1;
-//                pos.wx6=rand()%48+1;
-//                pos.wy6=rand()%23+1;
-//                grid_flag[pos.wx6][pos.wy6]=1;
-//            }
-
 
                 char input;
                 count_down_time_in_secs= 60;
