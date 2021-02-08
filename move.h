@@ -178,7 +178,7 @@ void movement()
                         PlaySound(TEXT("treasure.wav"), NULL, SND_FILENAME | SND_ASYNC);
                         score+=10;
                         draw_treasure();
-                        printf("\n\n\t\t\Congrats!! You have completed the game! *.*\n");
+                        printf("\n\n\t\tCongrats!! You have completed the game! *.*\n");
                         cout<<"\t\tYou get 10 bonus points and a treasure which is empty :v\n";
                         cout<<"\t\tYour total score is "<<score<<"! Go check out the Hall of Fame!";
                         SetColor(lightaqua);
