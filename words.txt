@@ -1,7 +1,5 @@
-transformers
 aladdin
 language
-programming
 dictionary
 privacy
 sibling
@@ -16,5 +14,4 @@ chocolate
 handsome
 online
 avatar
-competition
-environment
+transformers
