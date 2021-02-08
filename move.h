@@ -80,7 +80,8 @@ void movement()
                     cout<<"\nType in which direction you want to move: ";
                     SetColor(white);
 
-                    if (kbhit())    //how would timer know it have to reprint again if i don't press key. so it will keep reprinting without waiting for keypress, if i press key, then this happens
+                    if (kbhit())    //how would timer know it have to reprint again if i don't press key.
+                                   //so it will keep reprinting without waiting for key press, if i press key, then this happens
                     {
                         input=getch();
                         cin.clear(); // clear error flags
@@ -178,7 +179,7 @@ void movement()
                         PlaySound(TEXT("treasure.wav"), NULL, SND_FILENAME | SND_ASYNC);
                         score+=10;
                         draw_treasure();
-                        printf("\n\n\t\t\Congrats!! You have completed the game! *.*\n");
+                        printf("\n\n\t\tCongrats!! You have completed the game! *.*\n");
                         cout<<"\t\tYou get 10 bonus points and a treasure which is empty :v\n";
                         cout<<"\t\tYour total score is "<<score<<"! Go check out the Hall of Fame!";
                         SetColor(lightaqua);
