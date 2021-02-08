@@ -61,7 +61,7 @@ printline(line23,space);
 void movebear()
 {
     SetColor(darkyellow);
-    for (int i = 0; i <20 ; i++)
+    for (int i = 0; i <16 ; i++)
     {
        system("CLS");
        draw(i);
