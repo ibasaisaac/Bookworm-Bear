@@ -14,4 +14,3 @@ chocolate
 handsome
 online
 avatar
-transformers
