@@ -2,37 +2,42 @@
 #include<windows.h>
 #include<mmsystem.h>
 #include<conio.h>
-#include"grid.h"
-#include"color.h"
+
+#include"formatting.h"
 #include"move.h"
 #include"wordgame.h"
 #include"moveascii.h"
-#include"timer.h"
+
 using namespace std;
-
-int plays=0,wins=0,points=6,level=1;
-
 
 int main()
 {
-    mciSendString("seek BG.mp3 to start", NULL, 100, NULL);
-    mciSendString("play BG.mp3", NULL, 0, NULL);
-    //loading words
-    if (!load("words.txt", wordlist))
+    //loading scores
+    if((score_fp=fopen("scores.txt", "r+"))==NULL)
     {
         printf("words.txt is missing\n");
         exit(1);
     }
 
-    //loading hints
-    if (!load("hints.txt", hintlist))
+    //loading words and hints
+    if (!load("words.txt", "hints.txt", wordlist))
     {
-        printf("hints.txt missing\n");
+        cout<<"files missing\n";
         exit(1);
     }
-    //srand(time(NULL));
+
+    SetWindow(85, 40);
+    draw_intro_bear();
+    SetColor(lightgray);
+    cout<<"\n\t\t\t!!!Welcome to Bookworm Bear!!!\n\n";
+    PlaySound(TEXT("welcome.wav"), NULL, SND_FILENAME | SND_SYNC);
+    SetColor(lightaqua);
+    cout<<"What's your name?\n";
+    SetColor(white);
+    mciSendString("seek bg2.mp3 to start", 0, 100, 0); //command, ReturnString, cchReturn, hwndCallback
+    mciSendString("play bg2.mp3 repeat", 0, 0, 0);
     movement();
-    //WorL();
-    //mciSendString("close BG.mp3", NULL, 0, NULL);
+
+    mciSendString("close bg2.mp3", 0, 0, 0);
     return 0;
 }
