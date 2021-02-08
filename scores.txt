@@ -12,3 +12,4 @@ s    15
 ooo    15
 kokoo    4
 kokoo    0
+jj    0
