@@ -9,3 +9,4 @@ hh    4
 hh    6
 isa    3
 s    15
+ooo    15
