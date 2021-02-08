@@ -13,13 +13,13 @@ struct Level
     int words;
     map<int, position>wpos, tpos;
 
-    Level(int w)
+    Level(int w) //member function
     {
         words=w;
         srand(time(NULL));
         for(int i=0; i<words; i++)
         {
-            wpos[i] = {rand()%(28+1-2)+2, rand()%(13+1-2)+2};
+            wpos[i] = {rand()%(28+1-2)+2, rand()%(13+1-2)+2}; //(max +1 -min)+min
             tpos[i] = {rand()%(28+1-2)+2, rand()%(13+1-2)+2};
         }
     }
