@@ -17,17 +17,21 @@ int hangman(void)
 
     //loading fresh letters for reference
     vector<char> alphabet;
+    vector<char>:: iterator j;
+    j=alphabet.begin();
     for (int i = 65; i <=90; i++)
         alphabet.push_back(i);
 
     //choosing random word and hint
-    string word, hint;
-    word = wordlist[serial[s]].first;
-    hint=wordlist[serial[s]].second;
-    s++;
+//    string word, hint;
+//    word = wordlist[serial[s]].first;
+//    hint=wordlist[serial[s]].second;
+//    s++;
 
-    int total_letters= word.size(), filled_blanks = 0, lives = 6, points = 6, flag = 0, h = 1;
+
+    int total_letters= wordlist[serial[s]].first.size(), filled_blanks = 0, lives = 6, points = 6, flag = 0, h = 1;
     char current_blanks[10], hint_ch='n', letter1, letter2;
+
     for (int i = 0; i < total_letters; i++)
         current_blanks[i] = '_';
 
@@ -55,7 +59,7 @@ int hangman(void)
         if(hint_ch=='Y' || hint_ch=='y')
         {
             SetColor(white);
-            cout<<"\n\n\t"<<hint;
+            cout<<"\n\n\t"<<wordlist[serial[s]].second;
             h=0;
         }
 
@@ -72,7 +76,8 @@ int hangman(void)
         //printing reference alphabet
         SetColor(darkaqua);
         printf("\n\n\n\t ");
-        for (auto j = alphabet.begin(); j != alphabet.end(); j++)   cout << " " << *j;
+        for (j = alphabet.begin(); j != alphabet.end(); j++)
+            cout << " " << *j;
 
 
 
@@ -92,10 +97,10 @@ int hangman(void)
         //checking input with word and updating blanks
         for (int i = 0; i < total_letters; i++)
         {
-            if (tolower(letter1)==word[i])
+            if (tolower(letter1)==wordlist[serial[s]].first[i])
             {
                 flag = 1;
-                current_blanks[i] = word[i];
+                current_blanks[i] = wordlist[serial[s]].first[i];
                 filled_blanks++;
             }
         }
@@ -128,16 +133,18 @@ int hangman(void)
     //guessed whole word
     if (filled_blanks == total_letters)
     {
-        cout << "\n\n\n\t\t\t" << "   The word is " << word << "\n\n";
+        cout << "\n\n\n\t\t\t" << "   The word is " << wordlist[serial[s]].first << "\n\n";
         PlaySound(TEXT("wordcorrect.wav"), NULL, SND_FILENAME | SND_SYNC);
         wins++;
     }
     //couldn't guess word
     else
     {
-        cout << "\n\n\n\t\t\t" << "   The word was " << word << "\n\n";
+        cout << "\n\n\n\t\t\t" << "   The word was " << wordlist[serial[s]].first << "\n\n";
         PlaySound(TEXT("wordwrong.wav"), NULL, SND_FILENAME | SND_SYNC);
     }
+
+    s++;
 
 
     SetColor(white);
