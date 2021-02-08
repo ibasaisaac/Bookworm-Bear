@@ -22,13 +22,7 @@ int hangman(void)
     for (int i = 65; i <=90; i++)
         alphabet.push_back(i);
 
-    //choosing random word and hint
-//    string word, hint;
-//    word = wordlist[serial[s]].first;
-//    hint=wordlist[serial[s]].second;
-//    s++;
-
-
+    
     int total_letters= wordlist[serial[s]].first.size(), filled_blanks = 0, lives = 6, points = 6, flag = 0, h = 1;
     char current_blanks[10], hint_ch='n', letter1, letter2;
 
@@ -184,7 +178,7 @@ bool load(string word_file, string hint_file, vector<pair<string,string>> &list)
 
         srand(time(0));
         int generated[list.size()]= {0};
-        int count = 0, num;
+        unsigned int count = 0, num;
 
         while (count<list.size())
         {
