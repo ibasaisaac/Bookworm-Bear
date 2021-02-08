@@ -1,17 +1,7 @@
 #ifndef MOVEASCII_H_INCLUDED
 #define MOVEASCII_H_INCLUDED
-
-#ifdef _WIN32
-#define CLEAR "cls"
-#define SLEEP "ping -n 1 localhost > nul"
-#else //In any other OS
-#define CLEAR "clear"
-#define SLEEP "ping -c 1 localhost > nul"
-#endif
+#include"formatting.h"
 using namespace std;
-
-void printline(char *, int);
-void bear(int);
 
 void printline(char *line, int no)
 {
@@ -70,12 +60,78 @@ printline(line23,space);
 }
 void movebear()
 {
-    for (int i = 0; i <45 ; i++)
+    SetColor(darkyellow);
+    for (int i = 0; i <20 ; i++)
     {
-       system(SLEEP);
-       system(CLEAR);
+       system("CLS");
        draw(i);
     }
+    SetColor(white);
 }
+
+void draw_intro_bear()
+{
+    SetColor(darkyellow);
+    cout<<"\t\t\t"<< "    .--.              .--.        " <<"\n";
+    cout<<"\t\t\t"<< "   : (\\ '. _......_ .' /) :      " <<"\n";
+    cout<<"\t\t\t"<< "    '.    `        `    .'        " <<"\n";
+    cout<<"\t\t\t"<< "     /'   _        _    `\\       " <<"\n";
+    cout<<"\t\t\t"<< "    /     0}      {0      \\      " <<"\n";
+    cout<<"\t\t\t"<< "   |       /      \\       |      " <<"\n";
+    cout<<"\t\t\t"<< "   |     /'        '\\     |      " <<"\n";
+    cout<<"\t\t\t"<< "    \\   | .  .==.  . |   /       " <<"\n";
+    cout<<"\t\t\t"<< "     '._ \\.' \\__/ './ _.'       " <<"\n";
+    cout<<"\t\t\t"<< "     /  ``'._-''-_.'``  \\        " <<"\n";
+    SetColor(white);
+}
+
+void draw_thumbsup_bear(int n)
+{
+    SetColor(darkyellow);
+    for(int i=40; i<=n; i=i+2)
+    {
+        system("CLS");
+        cout<<setw(i)<< "    .--.              .--.               " <<"\n";
+        cout<<setw(i)<< "   : (\\ '. _......_ .' /) :              " <<"\n";
+        cout<<setw(i)<< "    '.    `        `    .'               " <<"\n";
+        cout<<setw(i)<< "     /'   _        _    `\\                " <<"\n";
+        cout<<setw(i)<< "    /     0}      {0      \\               " <<"\n";
+        cout<<setw(i)<< "   |       /      \\       |              " <<"\n";
+        cout<<setw(i)<< "   |     /'        '\\     |              " <<"\n";
+        cout<<setw(i)<< "    \\   | .  .==.  . |   /      .        " <<"\n";
+        cout<<setw(i)<< "     '._ \\.' \\__/ './ _.'      / )       " <<"\n";
+        cout<<setw(i)<< "     /  ``'._-''-_.'``  \\   --' (___     " <<"\n";
+        cout<<setw(i)<< "                            .  ((___)    " <<"\n";
+        cout<<setw(i)<< "                            .  ((___)    " <<"\n";
+        cout<<setw(i)<< "                            -._((__)     " <<"\n";
+        Sleep(30);
+    }
+    SetColor(white);
+}
+
+void draw_treasure(void)
+{
+    SetColor(lightyellow);
+    cout<< "         |                   |                  |                     |        " <<"\n";
+    cout<< "_________|________________.=''_;=.______________|_____________________|________" <<"\n";
+    cout<< "|                   |  ,-'_,=''     `'=.|                  |                   " <<"\n";
+    cout<< "|___________________|__'=._o`'-._        `'=.______________|___________________" <<"\n";
+    cout<< "          |                `'=._o`'=._      _`'=._                     |       " <<"\n";
+    cout<< " _________|_____________________:=._o '=._.'_.-='''=.__________________|_______" <<"\n";
+    cout<< "|                   |    __.--' , ; `'=._o.' ,-'''-._ '.   |                   " <<"\n";
+    cout<< "|___________________|_._'  ,. .` ` `` ,  `'-._'-._   '. '__|___________________" <<"\n";
+    cout<< "          |           |o`'=._` , '` `; .'. ,  '-._'-._; ;              |       " <<"\n";
+    cout<< " _________|___________| ;`-.o`'=._; .' ` '`.' ` . '-._ /_______________|_______" <<"\n";
+    cout<< "|                   | |o;    `'-.o`'=._``  '` ' ,__.--o;   |                   " <<"\n";
+    cout<< "|___________________|_| ;     (#) `-.o `'=.`_.--'_o.-; ;___|___________________" <<"\n";
+    cout<< "____/______/______/___|o;._    '      `'.o|o_.--'    ;o;____/______/______/____" <<"\n";
+    cout<< "/______/______/______/_'=._o--._        ; | ;        ; ;/______/______/______/_" <<"\n";
+    cout<< "____/______/______/______/__'=._o--._   ;o|o;     _._;o;____/______/______/____" <<"\n";
+    cout<< "/______/______/______/______/____'=._o._; | ;_.--'o.--'_/______/______/______/_" <<"\n";
+    cout<< "____/______/______/______/______/_____'=.o|o_.--''___/______/______/______/____" <<"\n";
+    cout<< "/______/______/______/______/______/______/______/______/______/______/________" <<"\n";
+    SetColor(white);
+}
+
 
 #endif // MOVEASCII_H_INCLUDED
