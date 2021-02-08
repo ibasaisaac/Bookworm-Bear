@@ -1,50 +1,45 @@
 # depslib dependency file v1.0
-1612472995 source:f:\game\boxgrid\main.cpp
+1612790777 source:f:\game\boxgrid\main.cpp
 	<bits/stdc++.h>
 	<windows.h>
 	<mmsystem.h>
 	<conio.h>
-	"grid.h"
-	"color.h"
+	"formatting.h"
 	"move.h"
 	"wordgame.h"
 	"moveascii.h"
-	"timer.h"
 
 1608502807 f:\game\boxgrid\hgame.h
 	<windows.h>
 	<mmsystem.h>
 
-1612474473 f:\game\boxgrid\grid.h
+1612790777 f:\game\boxgrid\grid.h
 
 1608668035 f:\game\boxgrid\color.h
 
 1612179416 f:\game\boxgrid\input.h
 	<iostream>
 
-1612476104 f:\game\boxgrid\move.h
+1612790777 f:\game\boxgrid\move.h
 	"grid.h"
 	"wordgame.h"
-	"moveascii.h"
 	"timer.h"
+	"moveascii.h"
 
-1612472605 f:\game\boxgrid\wordgame.h
-	<cstdlib>
-	<windows.h>
-	<mmsystem.h>
-	<conio.h>
-	"color.h"
-	"move.h"
+1612790777 f:\game\boxgrid\wordgame.h
 	"timer.h"
 
 1608912439 f:\game\boxgrid\ascii_art.h
 
-1612286454 f:\game\boxgrid\moveascii.h
+1612782082 f:\game\boxgrid\moveascii.h
+	"formatting.h"
 
-1609482464 f:\game\boxgrid\timer.h
+1612781296 f:\game\boxgrid\timer.h
 	<cstdlib>
 	<ctime>
 
 1612346192 f:\game\boxgrid\winlose.h
 	"timer.h"
+
+1612783606 f:\game\boxgrid\formatting.h
 
