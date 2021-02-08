@@ -3,310 +3,315 @@
 
 #include"grid.h"
 #include"wordgame.h"
-#include"moveascii.h"
 #include"timer.h"
+#include"moveascii.h"
 
 using namespace std;
-extern int plays,wins,level,points;
-//to use in all source files
 
-bool comp(pair<string, int> a, pair<string, int> b) //arranges the players in descen ding order
+int wins, plays;
+FILE* score_fp;
+
+bool comp(pair<string, int> a, pair<string, int> b)
 {
     return (a.second>b.second);
 }
 
-position check(position);
-
 void movement()
 {
-    FILE *score_fp;
-    if((score_fp=fopen("scores.txt", "a+"))==NULL)
-    {
-        cout<<"scores.txt is missing\n";
-        exit(1);
-    }
-    int men_ch=0, bg=1, score=0, bear=0;
-    string name;
+    int menu_ch=0, bg=1, score=0;
 
-    cout<<"\n\t\t\t!!!Welcome to Bookworm Bear!!!\n\nWhat's your name?\n";
+    string name;
     cin>>name;
     system("CLS");
-    cout<<"\nHi "<<name<<"!\n";
+    cout<<"\nHi "<<name<<"!";
 
-    //break when want to exit menu
+
+    //break when want to exit menu, proceed to close .exe
     while(1)
     {
-        cout<<"\n\n\n1. Start game\n2. Leaderboard\n3. BG Music\n4. How to play\n5. Exit game\n\nEnter your choice: ";
-        cin>>men_ch;
+        cout<<"\n\n\n1. Start game\n2. Leaderboard\n3. BG Music\n4. How to play\n5. Exit game\n\n";
+        SetColor(lightaqua);
+        cout<<"Enter your choice: ";
+        SetColor(white);
+        cin>>menu_ch;
         getchar();
 
+
         //start game
-        if(men_ch==1)
+        if(menu_ch==1)
         {
             system("CLS");
-            int words=4;
+            int words=3, level=1;//words3 need2 trap working
+
             score=0;
-            grid jungle {50, 25};
+            grid jungle {30, 15};
             position ppos;
-            while(men_ch==1)
+
+            //break when want to exit game result, proceed to main menu
+            while(menu_ch==1)
             {
-                Level newLevel=Level(words);//new struct for new level
+                Level newLevel=Level(words);
+                int tem_score=0;
                 wins=0;
                 plays=0;
                 ppos.x = 1;
                 ppos.y = 1;
-//            pos.wx1=rand()%48+1; //range 1 to 48
-//            pos.wy1=rand()%23+1;
-//            grid_flag[pos.wx1][pos.wy1]=1;
-//            pos.wx2=rand()%48+1;
-//            pos.wy2=rand()%23+1;
-//            grid_flag[pos.wx2][pos.wy2]=1;
-//            pos.wx3=rand()%48+1;
-//            pos.wy3=rand()%23+1;
-//            grid_flag[pos.wx3][pos.wy3]=1;
-//            pos.wx4=rand()%48+1;
-//            pos.wy4=rand()%23+1;
-//            grid_flag[pos.wx4][pos.wy4]=1;
-//            pos.tx1=rand()%48+1;
-//            pos.ty1=rand()%23+1;
-//            pos.tx2=rand()%48+1;
-//            pos.ty2=rand()%23+1;
-//            pos.tx3=rand()%48+1;
-//            pos.ty3=rand()%23+1;
-//            pos.tx4=rand()%48+1;
-//            pos.ty4=rand()%23+1;
-//            if(level==2)
-//            {
-//                pos.wx5=rand()%48+1;
-//                pos.wy5=rand()%23+1;
-//                grid_flag[pos.wx5][pos.wy5]=1;
-//                pos.wx6=rand()%48+1;
-//                pos.wy6=rand()%23+1;
-//                grid_flag[pos.wx6][pos.wy6]=1;
-//            }
-
 
                 char input;
                 count_down_time_in_secs= 60;
                 x_startTime=clock();
                 delta_time_update_timer();
-                gotoxy(1, 5);
 
-                //break when want to exit grid then proceed to game result
-                while (time_left>0 && plays<words /*&& wins<=words*/)
+                //break when want to exit grid, proceed to game result
+                while (time_left>0 && wins<words-1 && plays<words)
                 {
-                    cout<<endl;
+                    gotoxy(0, 0);
+                    SetColor(lightblue);
+                    cout<<"\n\t\t\t\t Level "<<level<<"\n";
+                    SetColor(lightyellow);
+                    delta_time_update_timer();
+                    cout<<"\t\t Score: "<<tem_score<<"\t\tCollected "<<wins<<" of "<<words-1<<" words";
+                    SetColor(white);
+                    gotoxy(0, 5);
                     jungle.Render(ppos, newLevel.wpos, newLevel.tpos);
-                    cout<<"\n\n'd' for going right\n'a' for going left\n'w' for going up\n's' for going down\n'p' for pausing the game\n'q' for quit\n";
-                    cout<<"Type in which direction you want to move: ";
 
-                    if(kbhit())
+                    cout<<"\n\n'd' to go right\n'a' to go left\n'w' to go up\n's' to go down\n'p' to pause\n'q' to quit to main menu\n";
+                    SetColor(lightaqua);
+                    cout<<"\nType in which direction you want to move: ";
+                    SetColor(white);
+
+                    if (kbhit())    //how would timer know it have to reprint again if i don't press key. so it will keep reprinting without waiting for keypress, if i press key, then this happens
                     {
                         input=getch();
                         cin.clear(); // clear error flags
 
-                        if(input=='q') //quit
+                        if(input == 'q')
                         {
                             break;
                         }
-                        else if(input=='p') //pause time
+
+                        else if (input == 'p')
                         {
                             x_countTime=clock();
                             pause_time=(x_countTime-x_startTime)/CLOCKS_PER_SEC;
                             system("CLS");
+                            SetColor(lightaqua);
                             cout<<"Press enter to resume\n";
+                            SetColor(white);
                             getchar();
                             system("CLS");
                             x_startTime=clock();
                             count_down_time_in_secs-= pause_time;
                         }
-                        else if (input == 'w') //up
+
+                        else if (input == 'w')
                         {
                             ppos.y--;
                             if(ppos.y<1)
-                                ppos.y=23;
+                                ppos.y=13;
                         }
-                        else if (input == 's') //down
+
+                        else if (input == 's')
                         {
                             ppos.y++;
-                            if(ppos.y>23)
+                            if(ppos.y>13)
                                 ppos.y=1;
                         }
-                        else if (input == 'd') //right
+
+                        else if (input == 'd')
                         {
                             ppos.x++;
-                            if(ppos.x>48)
+                            if(ppos.x>28)
                                 ppos.x=1;
                         }
-                        else if (input == 'a') //left
+
+                        else if (input == 'a')
                         {
                             ppos.x--;
                             if(ppos.x<1)
-                                ppos.x=48;
+                                ppos.x=28;
                         }
+
                         else
-                            continue; //prints grid again
+                            continue;
 
-                        // pos=check(pos);
-
-                        //hangman start condition
-                        for (int i=0; i<newLevel.wpos.size(); i++)
+                        for (unsigned int i=0; i<newLevel.wpos.size(); i++)
                         {
-                            //P reaches a W, hangman starts
                             if(ppos.x==newLevel.wpos[i].x && ppos.y==newLevel.wpos[i].y)
                             {
+                                PlaySound(TEXT("stepword.wav"), NULL, SND_FILENAME | SND_ASYNC);
                                 newLevel.wpos[i].x=-333;
                                 plays++;
-                                score+=hangman();
+                                tem_score+=hangman();
                             }
                             else if(ppos.x==newLevel.tpos[i].x && ppos.y==newLevel.tpos[i].y)
                             {
-                                movebear();
-                                bear=1;
-                                break;
+                                PlaySound(TEXT("steptrap.wav"), NULL, SND_FILENAME | SND_ASYNC);
+                                if(tem_score>0)
+                                    tem_score--;
                             }
                         }
-                        if(bear==1)
-                            break;
                     }
-                    delta_time_update_timer();
                 }
+
                 system("CLS");
 
                 //triggered quit, return to main menu
-                if(input=='q' || bear==1)
+                if(input=='q')
                 {
-                    printf("\n\n\t\tGame over\n");
-                    PlaySound(TEXT("lose.wav"), NULL, SND_SYNC);
-                    cout<<"Score: "<<score<<endl<<endl;
-                    //cout<<"Plays: "<<plays<<endl;
-                    bear=0;
-                    cout<<"Press enter to go to main menu\n";
+                    PlaySound(TEXT("ohnolose.wav"), NULL, SND_FILENAME | SND_ASYNC);
+                    movebear();
+                    printf("\n\n\t\t\tGame over\n");
+                    SetColor(lightaqua);
+                    cout<<"\n\n\t\t\tPress enter to go to main menu\n";
+                    SetColor(white);
                     getchar();
                     break;
                 }
-                //all levels cleared
-                else if(wins>=15)
-                {
-                    printf("\n\n\t\tCongrats!! You have completed the game! *.* \n\n");
-                    cout<<"Score: "<<score<<endl<<endl;
-                    break;
-                }
-                //level cleared: guessed required words; go to next level
-                else if(wins>=words-1)
-                {
-//                    if(wins>=15)
-//                    {
-//                        printf("\n\n\t\tCongrats!! You have completed the game! *.* \n\n");
-//                        cout<<"Score: "<<score<<endl<<endl;
-//                        break;
-//                    }
-//                    else
-//                    {
-                        printf("\n\n\t\tWooHoo!! You won! :)\n\n");
-                        PlaySound(TEXT("won.wav"), NULL, SND_SYNC);
-                        cout<<"Score: "<<score<<endl<<endl;
-                        cout<<"Press enter to go to next level\n";
-                        getchar();
-                        words+=2;
-                    //}
-                    system("CLS");
-                }
 
-//            if(wins==plays && wins!=0)
-//            {
-//                printf("\n\n\t\tWooHoo!! You won! :)");
-//                PlaySound(TEXT("won.wav"), NULL, SND_SYNC);
-//                wins=0;
-//                plays=0;
-//                continue;
-//            }
-                //level failed: time left but words unsolved
-                else if(plays==words && time_left>0 && wins<words-1)
+                //level cleared: guessed required words; go to next level
+                else if(wins==words-1)
                 {
-                    printf("\n\n\t\tOh no!! You lose! :(\n");
-                    PlaySound(TEXT("lose.wav"), NULL, SND_SYNC);
-                    cout<<"Score: "<<score<<endl<<endl;
-                    cout<<"1. Want to restart this level\n2. Quit\n";
-                    int tem_ch;
-                    cin>>tem_ch;
-                    if(tem_ch==2)
+                    score=tem_score;
+                    if(level==2)    //2 levels
                     {
-                        printf("\n\n\t\tGame over\n");
-                        PlaySound(TEXT("lose.wav"), NULL, SND_SYNC);
-                        cout<<"Press enter to go to main menu\n";
+                        PlaySound(TEXT("treasure.wav"), NULL, SND_FILENAME | SND_ASYNC);
+                        score+=10;
+                        draw_treasure();
+                        printf("\n\n\t\t\Congrats!! You have completed the game! *.*\n");
+                        cout<<"\t\tYou get 10 bonus points and a treasure which is empty :v\n";
+                        cout<<"\t\tYour total score is "<<score<<"! Go check out the Hall of Fame!";
+                        SetColor(lightaqua);
+                        cout<<"\n\n\t\tPress enter to go to main menu\n";
+                        SetColor(white);
                         getchar();
                         break;
                     }
-                    else //tem_ch==1
+                    else
+                    {
+                        PlaySound(TEXT("woohoowon.wav"), NULL, SND_FILENAME | SND_ASYNC);
+                        draw_thumbsup_bear(65);
+                        printf("\n\n\t\t\t\t  Great work!\n\t\t\t  You completed the level!:)\n\n");
+                        SetColor(lightaqua);
+                        cout<<"\n\n\t\t\tPress enter to go to next level\n";
+                        SetColor(white);
+                        getchar();
+                        PlaySound(TEXT("levelup.wav"), NULL, SND_FILENAME | SND_ASYNC);
+                        level++;
+                        words++;
+                        system("CLS");
                         continue;
+                    }
+                }
+
+                //level failed: time left but couldn't guess required words; restart this level or quit=game over
+                else if(plays==words && time_left>0)
+                {
+                    PlaySound(TEXT("levellose.wav"), NULL, SND_FILENAME | SND_ASYNC);
+                    printf("\n\n\t\t\tOh no!! You lose! :(\n");
+                    SetColor(lightaqua);
+                    cout<<"\n\t\t1. Want to restart this level\n\t\t2. Quit\n";
+                    SetColor(white);
+                    int tem_ch;
+                    cin>>tem_ch;
+                    getchar();
+                    if(tem_ch==2)
+                    {
+                        PlaySound(TEXT("ohnolose.wav"), NULL, SND_FILENAME | SND_ASYNC);
+                        movebear();
+                        printf("\n\n\t\t\tGame over\n");
+                        SetColor(lightaqua);
+                        cout<<"\n\n\t\t\tPress enter to go to main menu\n";
+                        SetColor(white);
+                        getchar();
+                        break;
+                    }
+                    else
+                    {
+                        system("CLS");
+                        continue;
+                    }
 
                     system("CLS");
                 }
-                //level failed: time out and words unsolved
+
+                //level failed: time out and couldn't guess required words; game over
                 else if(time_left==0)
                 {
-                    printf("\n\n\t\tTime's out! Game over\n");
-                    PlaySound(TEXT("lose.wav"), NULL, SND_SYNC);
-                    cout<<"Score: "<<score<<endl<<endl;
-                    cout<<"Press enter to go to main menu\n";
+                    PlaySound(TEXT("ohnolose.wav"), NULL, SND_FILENAME | SND_ASYNC);
+                    movebear();
+                    printf("\n\n\t\t\t  Time's out! Game over\n");
+                    SetColor(lightaqua);
+                    cout<<"\n\n\t\t\tPress enter to go to main menu\n";
+                    SetColor(white);
                     getchar();
                     break;
                 }
             }
-            string tstr="\n"+name+"\t"+to_string(points);
-            fputs(tstr.c_str(), score_fp); //putting the score and name in score.txt
+
+            fseek(score_fp, 0, SEEK_END);
+            fprintf(score_fp, "\n%s    %d", name.c_str(), score);
             system("CLS");
         }
 
+
         //leaderboard
-        else if(men_ch==2)
+        else if(menu_ch==2)
         {
             system("CLS");
-            vector<pair<string, int>> entry;
+            SetColor(lightred);
+            cout<<"\n\t\t\t Leaderboard\n\nName\t\tScore\n\n";
 
-            cout<<"\n\n\t\t\t Leaderboard\n\nName\t\tScore\n\n";
-            char buffer1[50]; //name
-            int buffer2; //score
+            vector<pair<string, int>> entry;
+            char buffer1[50];
+            int buffer2;
+
+
             fseek(score_fp, 0, SEEK_SET);
             while (!feof(score_fp))
             {
-                fscanf(score_fp,"%s %d",buffer1, &buffer2);
+                fscanf(score_fp, "%s        %d", buffer1, &buffer2);
                 entry.push_back(make_pair(buffer1, buffer2));
             }
 
-            sort(entry.begin(), entry.end(), comp); //sort in descending order
-            for(int i=0; i<entry.size(); i++)
+            sort(entry.begin(), entry.end(), comp);
+            SetColor(lightgray);
+            for(unsigned int i=0; i<entry.size(); i++)
                 cout<<entry[i].first<<"\t\t"<<entry[i].second<<"\n";
             cout<<"\n";
 
+            SetColor(lightaqua);
             cout<<"Press enter to return to main menu\n";
+            SetColor(white);
             getchar();
             system("CLS");
         }
 
-        //the Bg music on/off
-        else if(men_ch==3)
+
+        //bg music on off
+        else if(menu_ch==3)
         {
             if(bg==1)
             {
-                mciSendString("pause BG.mp3", NULL, 0, NULL);
+                mciSendString("pause bg2.mp3", NULL, 0, NULL);
                 bg=0;
             }
             else
             {
-                mciSendString("play BG.mp3", NULL, 0, NULL);
+                mciSendString("play bg2.mp3 repeat", NULL, 0, NULL);
                 bg=1;
             }
             system("CLS");
         }
 
-        //game rules
-        else if (men_ch==4)
+
+        //how to play
+        else if (menu_ch==4)
         {
             system("CLS");
-            cout<<"\n\n\t\t\t How to play\n\n";
-
+            SetColor(lightred);
+            cout<<"\t\t\t\t How to play\n\n";
+            SetColor(lightgray);
             ifstream rules_fp("rules.txt", ios::in);
             string buffer;
 
@@ -320,59 +325,27 @@ void movement()
                 rules_fp.close();
             }
             else
+            {
                 cout<<"rules.txt is missing\n";
+                exit(1);
+            }
 
+            SetColor(lightaqua);
             cout<<"Press enter to return to main menu\n";
+            SetColor(white);
             getchar();
             system("CLS");
         }
-        else if(men_ch==5)
-        {
+
+
+        //exit
+        else if(menu_ch==5)
             break;
-        }
+
         else
-        {
             continue;
-        }
     }
-    mciSendString("close BG.mp3", NULL, 0, NULL);
-    fclose(score_fp);
 }
 
-//checks for all of the pos values
-//position check(position pos)
-//{
-//    struct position newpos=pos;
-//    if(pos.px==pos.wx1 && pos.py==pos.wy1)
-//    {
-//        newpos.wx1=-333;
-//        hangman();
-//    }
-//    else if(pos.px==pos.wx2 && pos.py==pos.wy2)
-//    {
-//        newpos.wx2=-333;
-//        hangman();
-//    }
-//    else if(pos.px==pos.wx3 && pos.py==pos.wy3)
-//    {
-//        newpos.wx3=-333;
-//        hangman();
-//    }
-//    else if(pos.px==pos.wx4 && pos.py==pos.wy4)
-//    {
-//        newpos.wx4=-333;
-//        hangman();
-//    }
-//    else if(pos.px==pos.tx1 && pos.py==pos.ty1 || pos.px==pos.tx2 && pos.py==pos.ty2 || pos.px==pos.tx3 && pos.py==pos.ty3 || pos.px==pos.tx4 && pos.py==pos.ty4)
-//    {
-//        newpos.tx1=-333;
-//        plays+=4;
-//        movebear();
-//        printf("\n\n\t\tOh no!! You lose! :(\n");
-//        PlaySound(TEXT("lose.wav"), NULL, SND_SYNC);
-//    }
-//
-//    return newpos;
-//}
 
 #endif // MOVE_H_INCLUDED
