@@ -4,12 +4,3 @@ zuko	6
 sokka	3
 toph	5
 appa	3
-ko    0
-hh    4
-hh    6
-isa    3
-s    15
-ooo    15
-kokoo    4
-kokoo    0
-jj    0
