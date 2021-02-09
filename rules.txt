@@ -1,29 +1,15 @@
 The player has to cross the jungle of Popeyeland to obtain an invaluable treasure. However, it is not a piece of cake. 
-In order to do so, the player has to help the Bookworm Bear, who resides in the jungle, to fill up his dictionary. 
-The Bookworm Bear needs words for his dictionary. 
-The player has to collect the words which are spread across the jungle and then unlock those words by guessing each of the letters. 
+In order to do so, the player has to help the Bookworm Bear, who resides in the jungle, to fill up his dictionary. The Bookworm Bear needs words for his dictionary. The player has to collect the words which are spread across the jungle and then unlock those words by guessing each of the letters.
+ 
+Movement:
+The player has to collect certain number of words for the Bookworm Bear. The words are spread across the jungle which represents a grid pattern. The player has to find and collect these words by moving left, right, up or down. However, the words will be locked at first. To collect them, the player will have to play a minigame.
 
+Collecting words:
+The player will be given blanks to fill whenever he stumbles across a word. By guessing the letters of the word, the player can collect the word as well as points. There will be six chances of error for each word. If all the guesses run out for a certain word, the player will have to find another word in the jungle.
 
-Movement : The player has to collect certain number of words for the Bookworm Bear. 
-The words are spread across the jungle which represents a grid pattern. 
-The player has to find and collect these words by moving left, right, up or down. However, the words will be locked at first. 
-To collect them, the player will have to play a minigame.
+Earning points:
+Each word will have value of 6 points. The more guesses the  player needs, the less points he/she will get. The treasure can be acquired only after completing all the levels of the game. Acquiring the treasure will earn the player bonus points. The players can see their points in the leaderboard.
 
-
-Collecting words : The player will be given blanks to fill whenever he stumbles across a word. 
-By guessing the letters of the word, the player can collect the word as well as points. 
-There will be six chances of error for each word. If all the guesses run out for a certain word, the player will have to find another word in the jungle.
-
-
-Earning points : Each word will have value of 6 points. The more guesses the  player needs, the less points he/she will get. 
-The treasure can be acquired only after completing all the levels of the game. 
-Acquiring the treasure will earn the player bonus points. The players can see their points in the leaderboard.
-
-
-Clearing level : There will be 5 levels. The player will have a time limit to clear each level. 
-In each level, the number words to add in the dictionary will increase. 
-If the player guesses the required words correctly, those will be added in the Bear’s dictionary and the player will clear the level.
-If the player can not solve the words, he/she can choose to quit or start over the current level. 
-If the time runs out and the player is unable to collect the words, the Bear devours him and the game will be over. 
-In this way, the player has to unlock words in a given amount of time. Otherwise, the Bear will end up having a nice meal. 
+Clearing levels:
+There will be 2 levels. The player will have a time limit to clear each level. In each level, the number words to add in the dictionary will increase. If the player guesses the required words correctly, those will be added in the Bear’s dictionary and the player will clear the level. If the player can not solve the words, he/she can choose to quit or start over the current level. If the time runs out and the player is unable to collect the words, the Bear devours him and the game will be over. In this way, the player has to unlock words in a given amount of time. Otherwise, the Bear will end up having a nice meal.
 Eventually, the player can pass all the levels and obtain the treasure! :)
