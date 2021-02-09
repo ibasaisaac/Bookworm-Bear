@@ -41,7 +41,7 @@ void movement()
         if(menu_ch==1)
         {
             system("CLS");
-            int words=3, level=1;//words3 need2 trap working
+            int words=2, level=1;
 
             score=0;
             grid jungle {30, 15};
@@ -58,7 +58,7 @@ void movement()
                 ppos.y = 1;
 
                 char input;
-                count_down_time_in_secs= 60;
+                count_down_time_in_secs= 30;
                 x_startTime=clock();
                 delta_time_update_timer();
 
@@ -75,13 +75,14 @@ void movement()
                     gotoxy(0, 5);
                     jungle.Render(ppos, newLevel.wpos, newLevel.tpos);
 
+
                     cout<<"\n\n'd' to go right\n'a' to go left\n'w' to go up\n's' to go down\n'p' to pause\n'q' to quit to main menu\n";
                     SetColor(lightaqua);
                     cout<<"\nType in which direction you want to move: ";
                     SetColor(white);
 
                     if (kbhit())    //how would timer know it have to reprint again if i don't press key.
-                                   //so it will keep reprinting without waiting for key press, if i press key, then this happens
+                        //so it will keep reprinting without waiting for key press, if i press key, then this happens
                     {
                         input=getch();
                         cin.clear(); // clear error flags
@@ -173,7 +174,7 @@ void movement()
                 //level cleared: guessed required words; go to next level
                 else if(wins==words-1)
                 {
-                    score=tem_score;
+                    score+=tem_score;
                     if(level==2)    //2 levels
                     {
                         PlaySound(TEXT("treasure.wav"), NULL, SND_FILENAME | SND_ASYNC);
