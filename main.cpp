@@ -7,6 +7,7 @@
 #include"move.h"
 #include"wordgame.h"
 #include"moveascii.h"
+#include"grid.h"
 
 using namespace std;
 
