@@ -20,7 +20,7 @@ struct Level
         for(int i=0; i<words; i++)
         {
             wpos[i] = {rand()%(28+1-2)+2, rand()%(13+1-2)+2}; //(max +1 -min)+min
-            tpos[i] = {rand()%(28+1-2)+2, rand()%(13+1-2)+2};
+            tpos[i] = {rand()%(28+1-2)+2, rand()%(13+1-2)+2}; //2 to 28,13
         }
     }
 };
@@ -88,5 +88,4 @@ struct grid
         }
     }
 };
-
 #endif // GRID_H_INCLUDED
